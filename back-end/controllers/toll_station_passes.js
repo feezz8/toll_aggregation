@@ -1,6 +1,6 @@
 const { pool } = require('../utils/database');
 const { validateFields } = require('../utils/missing_params')
-const { Parser } = require.apply('json2csv');
+const { Parser } = require('json2csv');
 
 
 exports.get_data = async (req, res, next) => {

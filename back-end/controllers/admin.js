@@ -2,7 +2,7 @@ const { pool } = require('../utils/database');
 const { fs } = require('fs');
 const { path } = require('path');
 const { csv } = require('csv-parser');
-const { multer } = require('multer');
+const multer = require('multer');
 
 
 const upload = multer({ storage: multer.memoryStorage() });
