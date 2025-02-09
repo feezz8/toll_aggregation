@@ -1,9 +1,9 @@
 const express = require('express');
-const auth  = require('../middlewares/auth');
-const toll_station_passes = require.apply('../controllers/toll_station_passes');
-const pass_analysis = require.apply('../controllers/pass_analysis');
-const passes_cost = require.apply('../controllers/passes_cost');
-const charges_by = require.apply('../controllers/charges_by');
+const auth = require('../middlewares/auth');
+const toll_station_passes = require('../controllers/toll_station_passes');
+const pass_analysis = require('../controllers/pass_analysis');
+const passes_cost = require('../controllers/passes_cost');
+const charges_by = require('../controllers/charges_by');
 
 const router = express.Router();
 
