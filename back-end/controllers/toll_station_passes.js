@@ -22,29 +22,29 @@ exports.get_data = async (req, res, next) => {
  // SQL query to fetch the required data
     const query = `
         SELECT 
-            p.tollStationID, 
-            p.stationOperator, 
+            p.tollID, 
+            p.tollOpID, 
             NOW() AS requestTimestamp, 
             ? AS periodFrom, 
             ? AS periodTo, 
-            COUNT(p.passID) OVER (PARTITION BY p.stationID) AS nPasses,  -- Running total of passes
-            ROW_NUMBER() OVER (PARTITION BY p.stationID ORDER BY p.passID) AS passIndex,  -- Pass sequence per station
-            p.passID,
+            COUNT(p.ID) OVER (PARTITION BY p.tollID) AS nPasses,  -- Running total of passes
+            ROW_NUMBER() OVER (PARTITION BY p.tollID ORDER BY p.ID) AS passIndex,  -- Pass sequence per station
+            p.ID,
             p.timestamp,
-            p.tagID,
-            p.tagProvider,
+            p.tagRef,
+            p.tagHomeID,
             p.passType,
-            p.passCharge
-        FROM toll_passes p
+            p.charge
+        FROM passes p
         WHERE 
-            p.tollStationID = ? 
+            p.tollID = ? 
             AND p.passDate BETWEEN ? AND ?
-        ORDER BY p.stationID, p.timestamp;
+        ORDER BY p.tollID, p.timestamp;
     `;
    // Execute the query
     pool.getConnection((err, connection) => {
 
-        if(err) return res.status(500).json({message: 'Cannot connect to DB!'});
+        if(err) return res.status(500).json({message: 'Connection pool is saturated!'});
 
         connection.query(query, [start_date, end_date, station_id, start_date, end_date], (err, rows) =>{
             connection.release(); //Release the connection from the pool
