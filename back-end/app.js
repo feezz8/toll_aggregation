@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 
 /*import routes*/
-const toll_station = ('./routes/toll_station');
-const admin = ('./routes/admin');
+const toll_station = require('./routes/toll_station');
+const admin = require('./routes/admin');
 
-const app = express;
+const app = express();
 app.use(cors());
 
 app.use(express.json());
@@ -17,4 +17,5 @@ app.use('/api/admin', admin);
 
 
 app.use((req, res, next) => { res.status(404).json({ message: 'Endpoint not found' }) });
+
 module.exports = app;
