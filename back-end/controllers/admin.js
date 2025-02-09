@@ -10,9 +10,12 @@ const upload = multer({ storage: multer.memoryStorage() });
 exports.healthcheck = async(res) => {
     const query = `
     SELECT 
-        (SELECT COUNT(*) FROM stations) as n_stations,
-        (SELECT COUNT(*) FROM tags) as n_tags,
-        (SELECT COUNT(*) FROM passes) as n_passes
+        COUNT(DISTINCT s.ID) as station_count,
+        COUNT(DISTINCT p.tagRef) as tag_count,
+        COUNT(DISTINCT p.ID) as pass_count
+    FROM toll_stations s
+    CROSS JOIN passes p
+    LIMIT 1;
     `;
     pool.getConnection((err, connection) => {
         if(err) return res.status(500).json({ message: 'Connection pool is saturated' });
@@ -25,9 +28,9 @@ exports.healthcheck = async(res) => {
             const response = {
                 status: 'OK',
                 dbconnection: ' ', //connection string
-                n_stations: rows.n_stations,
-                n_tags: rows.n_tags,
-                n_passes: rows.n_passes
+                n_stations: rows.station_count,
+                n_tags: rows.tag_count,
+                n_passes: rows.pass_count
             };
             
             return res.status(200).json(response);
@@ -71,7 +74,7 @@ exports.reset_stations = async(req, res) => {
 
 exports.reset_passes = async(req, res) => {
     const query = `
-    DROP TABLE IF EXISTS passes
+    TRUNCATE TABLE passes
     `;
 
     pool.getConnection((err, connection) => {
@@ -110,7 +113,7 @@ exports.add_passes = [
             .on('end', async () => {
                 if (passes.length > 0) {
                     const query = `
-                    TRUNCATE TABLE passes
+                    --TRUNCATE TABLE passes
                     INSERT INTO passes (timestamp, tollID, tagRef, tagHomeID, charge) VALUES ?
                     `;
                     connection(query, [stations], (err) => {
