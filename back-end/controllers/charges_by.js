@@ -23,7 +23,7 @@ exports.get_data = async (req, res, next) => {
             p.tagHomeID AS visitingOpID,
             COUNT(p.ID) AS nPasses,
             SUM(p.charge) AS passesCost
-        FROM toll_passes p
+        FROM passes p
         WHERE 
             p.tollOpID = ?  -- Filter by the toll operator
             AND p.tagHomeID <> ?  -- Ensure the visiting operator is different

@@ -1,12 +1,6 @@
 const { pool } = require('../utils/database');
-const { fs } = require('fs');
-const path = require('node:path');
 const multer = require('multer');
 const csv = require('fast-csv');
-//const csvParser = require('csv-parser');
-
-
-//const filepath = '/home/konstantinos/Projects/back-end/utils/tollstations2024.csv';
 const upload = multer({ storage: multer.memoryStorage() });
 
 exports.healthcheck = async(req, res) => {
@@ -65,7 +59,7 @@ exports.resetstations = [
             }
             console.log("Table truncated successfully.");
         });
-        
+
         const csvParser = csv.parse({headers: true});
 
         const stations = [];
