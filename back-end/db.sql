@@ -13,7 +13,7 @@ CREATE TABLE passes (
     `tollOpID` VARCHAR(5),
     `tagRef` VARCHAR(100),
     `tagHomeID` VARCHAR(10),
-    `charge` DECIMAL(5,5),
+    `charge` FLOAT(10),
     `passType` VARCHAR(10)
 );
 
@@ -26,12 +26,12 @@ CREATE TABLE toll_stations (
     `PM` VARCHAR(10),
     `Locality` VARCHAR(255),
     `Road` VARCHAR(255),
-    `Lat` DECIMAL(10,6),
-    `Long` DECIMAL(10,6),
+    `Lat` FLOAT(10),
+    `Long` FLOAT(10),
     `Email` VARCHAR(255),
-    `Price1` DECIMAL(5,5),
-    `Price2` DECIMAL(5,5),
-    `Price3` DECIMAL(5,5)
+    `Price1` FLOAT(10),
+    `Price2` FLOAT(10),
+    `Price3` FLOAT(10)
 );
 
 DELIMITER $$
