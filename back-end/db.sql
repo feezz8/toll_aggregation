@@ -19,19 +19,19 @@ CREATE TABLE passes (
 
 CREATE TABLE toll_stations (
     `ID` INT AUTO_INCREMENT PRIMARY KEY,
-    `OpID` VARCHAR(255),
-    `Operator` VARCHAR(100),
-    `tollID` VARCHAR(100),
-    `Name` VARCHAR(100),
+    `OpID` VARCHAR(15),
+    `TollOperator` VARCHAR(100),
+    `TollID` VARCHAR(100),
+    `TollName` VARCHAR(100),
     `PM` VARCHAR(10),
     `Locality` VARCHAR(255),
     `Road` VARCHAR(255),
-    `Lat` FLOAT(10),
-    `Long` FLOAT(10),
+    `Latitude` FLOAT(15),
+    `Longtitude` FLOAT(15),
     `Email` VARCHAR(255),
-    `Price1` FLOAT(10),
-    `Price2` FLOAT(10),
-    `Price3` FLOAT(10)
+    `Price1` FLOAT(25),
+    `Price2` FLOAT(25),
+    `Price3` FLOAT(25)
 );
 
 DELIMITER $$
