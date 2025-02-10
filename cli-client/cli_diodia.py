@@ -35,8 +35,7 @@ def authenticated(func):
         if not api_key:
             print(":warning: [bold red]Authentication required. Please login first.[/bold red]")
             raise typer.Exit()
-        # Περνάμε το api_key στο context της συνάρτησης
-        kwargs["_api_key"] = api_key
+        kwargs["_api_key"] = api_key # Περνάμε το api_key στο context της συνάρτησης
         return func(*args, **kwargs)
     return wrapper
 
@@ -51,7 +50,6 @@ def handle_request(endpoint: str, method: str = "GET", api_key: Optional[str] = 
         if method.upper() == "GET":
             response = requests.get(url, headers=headers, params=params)
         elif method.upper() == "POST":
-            # Σημειώστε: Στην περίπτωση POST, παραδείγματα μας στέλνουν είτε form data είτε αρχεία.
             response = requests.post(url, headers=headers, data=params, json=json_data, files=files)
         else:
             print(f":no_entry: [bold red]Method {method} not implemented.[/bold red]")
@@ -144,7 +142,7 @@ def tollstationpasses(
     station: Annotated[str, typer.Option(help="Toll station ID")],
     from_date: Annotated[str, typer.Option("--from", help="Start date (YYYYMMDD)")],
     to_date: Annotated[str, typer.Option("--to", help="End date (YYYYMMDD)")],
-    format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "csv",
+    format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
     _api_key: str = None
 ):
     """Retrieves toll station passes."""
@@ -191,7 +189,7 @@ def chargesby(
     opid: Annotated[str, typer.Option(help="Toll operator ID")],
     from_date: Annotated[str, typer.Option("--from", help="Start date (YYYYMMDD)")],
     to_date: Annotated[str, typer.Option("--to", help="End date (YYYYMMDD)")],
-    format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "csv",
+    format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
     _api_key: str = None
 ):
     """Retrieves charges from other operators."""
