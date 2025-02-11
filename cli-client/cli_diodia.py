@@ -5,9 +5,10 @@ import requests
 import urllib.parse
 import json
 import os
+import functools
 
 # Βασικές ρυθμίσεις
-API_URL = "https://localhost:9115/api"  # Base URL του API
+API_URL = "http://localhost:9115/api"  # Base URL του API
 CONFIG_FILE = "cli_config.json"         # Αρχείο τοπικής αποθήκευσης διαπιστευτηρίων (π.χ. API key)
 
 # Βοηθητικές συναρτήσεις για τοπική αποθήκευση (config)
@@ -30,21 +31,35 @@ def store_config(key: str, value: Optional[str]):
 
 # Διακοσμητής για έλεγχο διαπίστευσης
 def authenticated(func):
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        api_key = load_config("api_key")
+        api_key = load_config("api_key")  # ✅ Load API Key
         if not api_key:
             print(":warning: [bold red]Authentication required. Please login first.[/bold red]")
             raise typer.Exit()
-        kwargs["_api_key"] = api_key # Περνάμε το api_key στο context της συνάρτησης
+
+        # ✅ Only add _api_key if it doesn't already exist
+        if "_api_key" not in kwargs or kwargs["_api_key"] is None:
+            kwargs["_api_key"] = api_key
+
         return func(*args, **kwargs)
+
     return wrapper
+
 
 # Βοηθητική συνάρτηση για την εκτέλεση αιτήσεων HTTP
 def handle_request(endpoint: str, method: str = "GET", api_key: Optional[str] = None, 
                    params: dict = None, json_data: dict = None, files: dict = None):
+    if api_key is None:  # ✅ Load API key if missing
+        api_key = load_config("api_key")
+
     headers = {}
     if api_key:
-        headers["X-OBSERVATORY-AUTH"] = api_key
+        headers["X-OBSERVATORY-AUTH"] = api_key  # ✅ Send API Key
+
+    print(f"🔍 Debug: API Key Used: {api_key}")  # Debugging line
+    print(f"🔍 Sending request to: {API_URL + endpoint}")  # Debugging line
+
     url = API_URL + endpoint
     try:
         if method.upper() == "GET":
@@ -58,12 +73,17 @@ def handle_request(endpoint: str, method: str = "GET", api_key: Optional[str] = 
         print(":cross_mark: [bold red]Server connection error.[/bold red]")
         return None
 
-    # Επιστρέφουμε το response μόνο αν ο κωδικός είναι 200 ή 204
+    print(f"🔍 Received status code: {response.status_code}")  # Debugging line
+
+    if response.status_code == 401:
+        print(":no_entry: [bold red]Unauthorized. API key might be missing or invalid.[/bold red]")
+
     if response.status_code in [200, 204]:
         return response
     else:
         print(f":no_entry: [bold red]Request failed with status code {response.status_code}.[/bold red]")
         return None
+
 
 # Βοηθητική συνάρτηση για εμφάνιση αποτελεσμάτων σε JSON ή CSV
 def print_response(response, format: str = "json", found_msg: str = "", empty_msg: str = ""):
@@ -117,7 +137,7 @@ def login(
         print(f":no_good: [bold red]Error: {e}[/bold red]")
 
 @app.command()
-@authenticated
+#@authenticated
 def logout(_api_key: str = None):
     """Logs out and deletes token from local storage."""
     try:
@@ -137,7 +157,7 @@ def logout(_api_key: str = None):
 # Λειτουργίες βασικών endpoints
 ####################################
 @app.command()
-@authenticated
+#@authenticated
 def tollstationpasses(
     station: Annotated[str, typer.Option(help="Toll station ID")],
     from_date: Annotated[str, typer.Option("--from", help="Start date (YYYYMMDD)")],
@@ -152,7 +172,7 @@ def tollstationpasses(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Toll station passes:[/bold green]")
 
 @app.command()
-@authenticated
+#@authenticated
 def passanalysis(
     stationop: Annotated[str, typer.Option(help="Station operator ID")],
     tagop: Annotated[str, typer.Option(help="Tag operator ID")],
@@ -168,7 +188,7 @@ def passanalysis(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Pass analysis:[/bold green]")
 
 @app.command()
-@authenticated
+#@authenticated
 def passescost(
     stationop: Annotated[str, typer.Option(help="Toll operator ID")],
     tagop: Annotated[str, typer.Option(help="Tag operator ID")],
@@ -184,7 +204,7 @@ def passescost(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Passes cost:[/bold green]")
 
 @app.command()
-@authenticated
+#@authenticated
 def chargesby(
     opid: Annotated[str, typer.Option(help="Toll operator ID")],
     from_date: Annotated[str, typer.Option("--from", help="Start date (YYYYMMDD)")],
@@ -214,7 +234,7 @@ def healthcheck(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Healthcheck result:[/bold green]")
 
 @app.command()
-@authenticated
+#@authenticated
 def resetstations(
     format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
     _api_key: str = None
@@ -226,7 +246,7 @@ def resetstations(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Reset stations result:[/bold green]")
 
 @app.command()
-@authenticated
+#@authenticated
 def resetpasses(
     format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
     _api_key: str = None
@@ -238,7 +258,7 @@ def resetpasses(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Reset passes result:[/bold green]")
 
 @app.command()
-@authenticated
+#@authenticated
 def addpasses(
     source: Annotated[str, typer.Option(help="CSV file with pass events")],
     format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
