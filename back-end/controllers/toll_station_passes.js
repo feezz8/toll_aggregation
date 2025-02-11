@@ -116,4 +116,3 @@ exports.get_data = async (req, res, next) => {
 };
 
 
-

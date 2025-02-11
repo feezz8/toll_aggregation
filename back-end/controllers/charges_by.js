@@ -5,64 +5,77 @@ const { Parser } = require('json2csv');
 
 
 exports.get_data = async (req, res, next) => {
-    const {toll_op_id, start_date, end_date}  = req.params;
+    const {tollOpID, date_from, date_to}  = req.params;
 
     const required_params = ['tollOpID', 'date_from', 'date_to'];
-    const missing_params = validateFields(req, 'query', required_params);
+    const missing_params = validateFields(req, 'params', required_params);
 
     if(missing_params.length > 0) {
-        return res.status(400).json({message: `Missing query parameters: ${missingParams.join(', ')}` });
+        return res.status(400).json({message: `Missing query parameters: ${missing_params.join(', ')}` });
     }
 
     const query = `
         SELECT 
-            ? AS tollOpID,
-            NOW() AS requestTimestamp,
+            p.tagHomeID AS visitingOpID,
             ? AS periodFrom,
             ? AS periodTo,
-            p.tagHomeID AS visitingOpID,
-            COUNT(p.ID) AS nPasses,
+            COUNT(*) AS nPasses,
             SUM(p.charge) AS passesCost
         FROM passes p
         WHERE 
-            p.tollOpID = ?  -- Filter by the toll operator
-            AND p.tagHomeID <> ?  -- Ensure the visiting operator is different
-            AND p.timestamp BETWEEN ? AND ?
-        GROUP BY p.tagHomeID;   
+            p.tollOpID = ?           -- our operator (the toll station owner)
+            AND p.tagHomeID <> ?   -- only include visiting operators
+            AND p.timestamp BETWEEN 
+                STR_TO_DATE(?, '%Y%m%d') 
+            AND 
+                STR_TO_DATE(?, '%Y%m%d') + INTERVAL 1 DAY - INTERVAL 1 SECOND
+        GROUP BY p.tagHomeID
+        ORDER BY p.tagHomeID;  
     `;
    // Execute the query
     pool.getConnection((err, connection) => {
 
         if(err) return res.status(500).json({message: 'Connection pool is saturated'});
 
-        connection.query(query, [toll_op_id, start_date, end_date, toll_op_id, toll_op_id, start_date, end_date], (err, rows) =>{
+        connection.query(query, [date_from, date_to, tollOpID, tollOpID, date_from, date_to], (err, rows) =>{
             
             connection.release(); //Release the connection from the pool
             if(err) return res.status(500).json({message: 'Internal Server Error'});
-            
+    
+            if(rows.length === 0){
+                return res.json({ message: "No data found!" });
+            }     
+
+            const response = {
+                tollOpID: tollOpID,
+                requestTimestamp: new Date().toISOString(),
+                periodFrom: date_from,
+                periodTo: date_to,
+                vOpList: rows.map(vOp => ({
+                    visitingOpID: vOp.visitingOpID,
+                    nPasses: vOp.nPasses,
+                    passesCost: parseFloat(vOp.passesCost)
+                }))
+            };
+
             // Check for format query parameter
             if (req.query.format === 'csv') {
                 try {
-                    const formatted_rows = rows.flatMap(row =>
-                        row.passList.map((pass) => ({
-                            tollOpID: row.tollOpID,
-                            tagOpId: row.tagOpID,
-                            requestTimestamp: row.requestTimestamp,
-                            periodFrom: row.periodFrom,
-                            periodTo: row.periodTo,
-                            visitingOpID: pass.tagOpID,
-                            nPasses: pass.nPasses,
-                            passesCost: pass.passesCost
-                        }))
-                    );
+                    const formatted_rows = response.vOpList.flatMap(pass => ({
+                            tollOpID: response.tollOpID,
+                            requestTimestamp: response.requestTimestamp,
+                            periodFrom: response.periodFrom,
+                            periodTo: response.periodTo,
+                            ...pass
+                        }));
             
                     const fields = [
                         'tollOpID',
                         'requestTimestamp',
                         'periodFrom',
                         'periodTo',
-                        'visitingOpId',
-                        'npasses',
+                        'visitingOpID',
+                        'nPasses',
                         'passesCost'
                     ];
 
@@ -79,22 +92,7 @@ exports.get_data = async (req, res, next) => {
                 }
             }    
             
-            if(rows.length === 0){
-                return res.json({ message: "No data found!" });
-            }     
-
-            const response = {
-                tollOpID: toll_op_id,
-                requestTimestamp: new Date().toISOString(),
-                periodFrom: start_date,
-                periodTo: end_date,
-                vOpList: rows.map(row => ({
-                    visitingOpID: row.visitingOpID,
-                    nPasses: row.nPasses,
-                    passesCost: parseFloat(row.passesCost)
-                }))
-            };
-            return res.status(200).json(rows);
+            return res.status(200).json(response);
         });
     });
 };

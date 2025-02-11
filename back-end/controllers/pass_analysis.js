@@ -11,7 +11,7 @@ exports.get_data = async (req, res, next) => {
     const missing_params = validateFields(req, 'params', required_params);
 
     if(missing_params.length > 0) {
-        return res.status(400).json({message: `Missing query parameters: ${missingParams.join(', ')}` });
+        return res.status(400).json({message: `Missing query parameters: ${missing_params.join(', ')}` });
     }
 
     const query = `
@@ -21,21 +21,23 @@ exports.get_data = async (req, res, next) => {
             NOW() AS requestTimestamp,
             ? AS periodFrom, 
             ? AS periodTo,
-            COUNT(p.ID) OVER(PARTITION BY p.tollID, p.tagHomeID) AS nPasses,
-            ROW_NUMBER() OVER (PARTITION BY p.tollID ORDER BY p.ID) AS passIndex,
+            COUNT(p.ID) OVER (PARTITION BY p.tollOpID, p.tagHomeID) AS nPasses,
+            ROW_NUMBER() OVER (PARTITION BY p.tollOpID ORDER BY p.ID) AS passIndex,
             p.ID,
             p.tollID,
             p.timestamp,
             p.tagRef,
             p.charge
         FROM passes p
-        WHERE p.tollOpID = ? 
-        AND p.tagHomeID = ?
-        AND timestamp BETWEEN 
-            STR_TO_DATE(?, '%Y%m%d') 
-        AND 
-            STR_TO_DATE(?, '%Y%m%d') + INTERVAL 1 DAY - INTERVAL 1 SECOND  
-        ORDER BY p.tollID, p.timestamp;
+        WHERE 
+            p.tollOpID = ? 
+            AND 
+            p.tagHomeID = ?
+            AND timestamp BETWEEN 
+                STR_TO_DATE(?, '%Y%m%d') 
+            AND 
+                STR_TO_DATE(?, '%Y%m%d') + INTERVAL 1 DAY - INTERVAL 1 SECOND  
+        ORDER BY p.tollOpID, p.timestamp;
     `;
 
    // Execute the query
@@ -47,7 +49,11 @@ exports.get_data = async (req, res, next) => {
             connection.release(); //Release the connection from the pool
             console.log(err);
             if(err) return res.status(500).json({message: 'Internal Server Error'});
-            
+
+            if(rows.length === 0){
+                return res.json({ message: "No data found!" });
+            }
+
             const response = {
                 stationOpID: stationOpID,
                 tagOpID: tagOpID,
@@ -69,17 +75,17 @@ exports.get_data = async (req, res, next) => {
             if (req.query.format === 'csv') {
                 try {
                     const formatted_rows = response.passList.flatMap(pass => ({
-                        passIndex: response.passIndex,
-                        passID: response.passID,
+                        stationOpID: response.stationOpID,
+                        tagOpID: response.tagOpID,
                         requestTimestamp: response.requestTimestamp,
-                        stationID: response.tollID,
-                        tagID: response.tagRef,
+                        periodFrom: response.periodFrom,
+                        periodTo: response.periodTo,
                         npasses: response.npasses,
                         ...pass
                     }));
         
                     const fields = [
-                        'stationID',
+                        'stationOpID',
                         'tagOpID',
                         'requestTimestamp',
                         'periodFrom',

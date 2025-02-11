@@ -1,6 +1,7 @@
 const { pool } = require('../utils/database');
 const multer = require('multer');
 const csv = require('fast-csv');
+
 const upload = multer({ storage: multer.memoryStorage() });
 
 exports.healthcheck = async(req, res) => {
@@ -59,7 +60,7 @@ exports.resetstations = [
             }
             console.log("Table truncated successfully.");
         });
-
+        
         const csvParser = csv.parse({headers: true});
 
         const stations = [];

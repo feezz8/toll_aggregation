@@ -5,92 +5,86 @@ const { Parser } = require('json2csv');
 
 
 exports.get_data = async (req, res, next) => {
-    const {toll_op_id, tag_op_id, start_date, end_date}  = req.params;
+    const {tollOpID, tagOpID, date_from, date_to}  = req.params;
 
     const required_params = ['tollOpID', 'tagOpID', 'date_from', 'date_to'];
-    const missing_params = validateFields(req, 'query', required_params);
+    const missing_params = validateFields(req, 'params', required_params);
 
     if(missing_params.length > 0) {
-        return res.status(400).json({message: `Missing query parameters: ${missingParams.join(', ')}` });
+        return res.status(400).json({message: `Missing query parameters: ${missing_params.join(', ')}` });
     }
 
     const query = `
         SELECT 
-            tollOpID,
-            tagHomeID,
+            p.tollOpID,
+            p.tagHomeID,
             NOW() AS requestTimestamp,
             ? AS periodFrom, 
             ? AS periodTo,
-            COUNT(ID) AS nPasses,
-            SUM(charge) AS passesCost
-        FROM passes 
-        WHERE
-            tollOpID = ?
-            AND tagHomeID = ?
-            AND timestamp BETWEEN ? AND ?
-        GROUP BY tollOpID, tagHomeID
+            COUNT(*) OVER (PARTITION BY p.tollOpID, p.tagHomeID) AS nPasses,
+            SUM(p.charge) OVER (PARTITION BY p.tollOpID, p.tagHomeID) AS passesCost
+        FROM passes p
+        WHERE 
+            p.tollOpID = ? 
+            AND p.tagHomeID = ?
+            AND p.timestamp BETWEEN 
+                STR_TO_DATE(?, '%Y%m%d') 
+            AND 
+                STR_TO_DATE(?, '%Y%m%d') + INTERVAL 1 DAY - INTERVAL 1 SECOND  
+        ORDER BY p.tollOpID, p.timestamp;
     `;
+
    // Execute the query
-    pool.getConnection((err, connection) => {
+   pool.getConnection((err, connection) => {
 
-        if(err) return res.status(500).json({message: 'Connection pool is saturated!'});
+    if(err) return res.status(500).json({message: 'Connection pool is saturated!'});
 
-        connection.query(query, [start_date, end_date, toll_op_id, tag_op_id, , start_date, end_date], (err, rows) =>{
-            connection.release(); //Release the connection from the pool
-            if(err) return res.status(500).json({message: 'Internal Server Error'});
-            
-            // Check for format query parameter
-            if (req.query.format === 'csv') {
-                try {
-                    const formatted_rows = rows.flatMap(row =>
-                        row.passList.map(() => ({
-                            tollOpID: row.tollOpID,
-                            tagOpId: row.tagOpID,
-                            requestTimestamp: row.requestTimestamp,
-                            periodFrom: row.periodFrom,
-                            periodTo: row.periodTo,
-                            nPasses: row.nPasses,
-                            passesCost: row.passesCost
-                        }))
-                    );
-            
-                    const fields = [
-                        'tollOpID',
-                        'tagOpID',
-                        'requestTimestamp',
-                        'periodFrom',
-                        'periodTo',
-                        'npasses',
-                        'passesCost'
-                    ];
+    connection.query(query, [date_from, date_to, tollOpID, tagOpID, date_from, date_to], (err, rows) =>{
+        connection.release(); //Release the connection from the pool
+        console.log(err);
+        if(err) return res.status(500).json({message: 'Internal Server Error'});
+        //Check empty dataset
 
-                    const parser = new Parser({ fields });
-                    const csv = parser.parse(formatted_rows);
+        if(rows.length === 0){
+            return res.json({ message: "No data found!" });
+        }
 
-                    res.header('Content-Type', 'text/csv');
-                    res.attachment('passesCost.csv');
-                    // Return the results in csv format
-                    return res.status(200).send(csv);   
-                } catch (csvError) {            //Error Handling
-                    console.error('Error generating CSV:', csvError);   
-                    return res.status(500).json({ error: 'Error generating CSV' });
-                }
-            } 
+        const response = {
+            tollOpID: tollOpID,
+            tagOpID: tagOpID,
+            requestTimestamp: new Date().toISOString(),
+            periodFrom: date_from,
+            periodTo: date_to,
+            nPasses: parseInt(rows[0].nPasses),
+            passesCost: parseFloat(rows[0].passesCost)
+        };
+        
+        // Check for format query parameter
+        if (req.query.format === 'csv') {
+            try {     
+                const fields = [
+                    'tollOpID',
+                    'tagOpID',
+                    'requestTimestamp',
+                    'periodFrom',
+                    'periodTo',
+                    'nPasses',
+                    'passesCost'
+                ];
 
-            //Check empty dataset
-            if(rows.length === 0){
-                return res.json({ message: "No data found!" });
+                const parser = new Parser({ fields });
+                const csv = parser.parse(response);
+
+                res.header('Content-Type', 'text/csv');
+                res.attachment('passesCost.csv');
+                // Return the results in csv format
+                return res.status(200).send(csv);   
+            } catch (csvError) {            //Error Handling
+                console.error('Error generating CSV:', csvError);   
+                return res.status(500).json({ error: 'Error generating CSV' });
             }
-            const response = {
-                tollOpID: toll_op_id,
-                tagOpID: tag_op_id,
-                requestTimestamp: new Date().toISOString(),
-                periodFrom: start_date,
-                periodTo: end_date,
-                npasses: rows.nPasses,
-                passesCOst: rows.passesCost
-            };
-            return res.status(200).json(response);
+        } 
+        return res.status(200).json(response);
         });
     });
 };
