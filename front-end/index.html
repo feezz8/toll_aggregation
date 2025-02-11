@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toll Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Toll Management System</h1>
+
+    <!-- 📊 Toll Pass Statistics -->
+    <section>
+        <h2>📊 Toll Passes Statistics</h2>
+        
+        <div class="form-group">
+            <label for="stationID">Toll Station ID:</label>
+            <input type="text" id="stationID" placeholder="e.g., 1234">
+        </div>
+
+        <div class="form-group">
+            <label for="dateFrom">From:</label>
+            <input type="date" id="dateFrom">
+        </div>
+
+        <div class="form-group">
+            <label for="dateTo">To:</label>
+            <input type="date" id="dateTo">
+        </div>
+
+        <button onclick="fetchPassStats()">Get Statistics</button>
+
+        <div id="passStatsResult"></div>
+    </section>
+
+    <!-- 💰 Expenses Report -->
+    <section>
+        <h2>💰 Expenses Report</h2>
+
+        <div class="form-group">
+            <label for="tollOpID">Toll Operator ID:</label>
+            <input type="text" id="tollOpID" placeholder="e.g., GR-TollOp1">
+        </div>
+
+        <div class="form-group">
+            <label for="tagOpID">Tag Provider ID:</label>
+            <input type="text" id="tagOpID" placeholder="e.g., GR-TagOp2">
+        </div>
+
+        <div class="form-group">
+            <label for="expenseDateFrom">From:</label>
+            <input type="date" id="expenseDateFrom">
+        </div>
+
+        <div class="form-group">
+            <label for="expenseDateTo">To:</label>
+            <input type="date" id="expenseDateTo">
+        </div>
+
+        <button onclick="fetchExpensesReport()">Get Report</button>
+
+        <div id="expensesResult"></div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
