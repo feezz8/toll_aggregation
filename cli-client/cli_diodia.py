@@ -7,8 +7,11 @@ import json
 import os
 import functools
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 # Βασικές ρυθμίσεις
-API_URL = "http://localhost:9115/api"  # Base URL του API
+API_URL = "https://localhost:9115/api"  # Base URL του API
 CONFIG_FILE = "cli_config.json"         # Αρχείο τοπικής αποθήκευσης διαπιστευτηρίων (π.χ. API key)
 
 # Βοηθητικές συναρτήσεις για τοπική αποθήκευση (config)
@@ -50,33 +53,35 @@ def authenticated(func):
 # Βοηθητική συνάρτηση για την εκτέλεση αιτήσεων HTTP
 def handle_request(endpoint: str, method: str = "GET", api_key: Optional[str] = None, 
                    params: dict = None, json_data: dict = None, files: dict = None):
-    if api_key is None:  # ✅ Load API key if missing
+    if api_key is None:
         api_key = load_config("api_key")
 
     headers = {}
     if api_key:
-        headers["X-OBSERVATORY-AUTH"] = api_key  # ✅ Send API Key
+        headers["secret-key"] = api_key  # Changed from X-OBSERVATORY-AUTH to secret-key
 
-    print(f"🔍 Debug: API Key Used: {api_key}")  # Debugging line
-    print(f"🔍 Sending request to: {API_URL + endpoint}")  # Debugging line
+    print(f"🔍 Debug: API Key Used: {api_key}")
+    print(f"🔍 Debug: Headers:", headers)
+    print(f"🔍 Sending request to: {API_URL + endpoint}")
 
     url = API_URL + endpoint
     try:
         if method.upper() == "GET":
-            response = requests.get(url, headers=headers, params=params)
+            response = requests.get(url, headers=headers, params=params, verify=False)
         elif method.upper() == "POST":
-            response = requests.post(url, headers=headers, data=params, json=json_data, files=files)
+            response = requests.post(url, headers=headers, data=params, json=json_data, files=files, verify=False)
         else:
             print(f":no_entry: [bold red]Method {method} not implemented.[/bold red]")
             return None
-    except requests.ConnectionError:
-        print(":cross_mark: [bold red]Server connection error.[/bold red]")
+    except requests.ConnectionError as e:
+        print(f":cross_mark: [bold red]Server connection error: {str(e)}[/bold red]")
         return None
 
-    print(f"🔍 Received status code: {response.status_code}")  # Debugging line
+    print(f"🔍 Received status code: {response.status_code}")
 
     if response.status_code == 401:
         print(":no_entry: [bold red]Unauthorized. API key might be missing or invalid.[/bold red]")
+        print(":information: Make sure the API key matches the MY_SECRET_KEY in your server's environment variables")
 
     if response.status_code in [200, 204]:
         return response
@@ -84,12 +89,17 @@ def handle_request(endpoint: str, method: str = "GET", api_key: Optional[str] = 
         print(f":no_entry: [bold red]Request failed with status code {response.status_code}.[/bold red]")
         return None
 
-
 # Βοηθητική συνάρτηση για εμφάνιση αποτελεσμάτων σε JSON ή CSV
-def print_response(response, format: str = "json", found_msg: str = "", empty_msg: str = ""):
+# Βοηθητική συνάρτηση για εμφάνιση αποτελεσμάτων σε JSON ή CSV
+def print_response(response, format: str = "json", found_msg: str = "", empty_msg: str = ":warning: [bold yellow]No content found![/bold yellow]"):
     if response is None:
         print(empty_msg)
         return
+    
+    if response.status_code == 204:
+        print(empty_msg)
+        return
+
     if format.lower() == "json":
         try:
             data = response.json()
@@ -239,10 +249,12 @@ def resetstations(
     format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
     _api_key: str = None
 ):
-    """Resets toll stations to initial state."""
+    """Resets toll stations to initial state using the local tollstations2024.csv file."""
     params = {"format": format}
     endpoint = "/admin/resetstations"
-    response = handle_request(endpoint, method="POST", api_key=_api_key, params=params)
+    with open("tollstations2024.csv", "rb") as f:
+        files = {'file': ('tollstations2024.csv', f, 'text/csv')}
+        response = handle_request(endpoint, method="POST", api_key=_api_key, files=files)
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Reset stations result:[/bold green]")
 
 @app.command()
@@ -258,20 +270,27 @@ def resetpasses(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Reset passes result:[/bold green]")
 
 @app.command()
-#@authenticated
-def addpasses(
-    source: Annotated[str, typer.Option(help="CSV file with pass events")],
-    format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
-    _api_key: str = None
+def admin(
+    addpasses: Annotated[bool, typer.Option(help="Upload pass events from a CSV file", show_default=False)] = False,
+    source: Annotated[Optional[str], typer.Option(help="CSV file with pass events")] = None,
 ):
-    """Uploads new pass events from a CSV file."""
+    """Admin command with multiple options."""
+    if addpasses:
+        if not source:
+            print(":no_entry: [bold red]Please provide a CSV file using --source.[/bold red]")
+            raise typer.Exit()
+        addpasses_command(source)
+
+@authenticated
+def addpasses_command(source: str, _api_key: str = None):
+    """Uploads pass events from a CSV file."""
     try:
         with open(source, "rb") as f:
             files = {'file': ('passes.csv', f, 'text/csv')}
-            params = {"format": format}
             endpoint = "/admin/addpasses"
-            response = handle_request(endpoint, method="POST", api_key=_api_key, params=params, files=files)
-            print_response(response, format=format, found_msg=":white_check_mark: [bold green]Add passes result:[/bold green]")
+            response = handle_request(endpoint, method="POST", api_key=_api_key, files=files)
+            if response:
+                print(":white_check_mark: [bold green]Pass events uploaded successfully.[/bold green]")
     except OSError:
         print(":cross_mark: [bold red]Could not open file.[/bold red]")
 
