@@ -1,7 +1,15 @@
 require('dotenv').config();
-
+const https = require('https');
 const app = require('./app');
+const fs = require('fs');
 
-const PORT = process.env.PORT || 9115;
+// Load SSL certificate and key
+const options = {
+    key: fs.readFileSync("key.pem"),
+    cert: fs.readFileSync("cert.pem"),
+};
 
-app.listen(PORT, () => console.log(`Server running on ${PORT}!`));
+// Create the HTTPS server
+https.createServer(options, app).listen(9115, () => {
+    console.log("Server running on https://localhost:9115");
+});

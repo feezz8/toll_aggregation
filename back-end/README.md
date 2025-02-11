@@ -1,10 +1,12 @@
 # Back-end
 
-Ενδεικτικά περιεχόμενα:
+Create a .env file containing the following:
+#Database connection
+PORT = 9115
+DB_HOST = localhost
+DB_PORT = 3306
+DB_USER = "YOUR DB USERNAME"
+DB_PASS = "YOUR DB PASSWORD"
+DB = "YOUR DB NAME"
 
-- Πηγαίος κώδικας εφαρμογής για εισαγωγή, διαχείριση και
-  πρόσβαση σε δεδομένα (backend).
-- Database dump (sql ή json)
-- Back-end functional tests.
-- Back-end unit tests.
-- RESTful API.
+NOTE: you need to create an SSL certificate to connect to https.

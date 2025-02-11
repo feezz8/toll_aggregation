@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 /*import routes*/
 const toll_station = require('./routes/toll_station');
@@ -10,6 +11,8 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname,'..', 'front-end', 'public')));
 
 /*Routes used*/
 app.use('/api', toll_station);
