@@ -58,7 +58,7 @@ exports.get_data = async (req, res, next) => {
                 requestTimestamp: new Date().toISOString(),
                 periodFrom: date_from,
                 periodTo: date_to,
-                npasses: rows[0].nPasses,
+                nPasses: rows[0].nPasses,
                 passList: rows.map(pass => ({
                     passIndex: pass.passIndex, // Pass number
                     passID: pass.ID,
