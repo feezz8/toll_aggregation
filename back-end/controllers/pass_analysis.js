@@ -54,6 +54,11 @@ exports.get_data = async (req, res, next) => {
                 return res.json({ message: "No data found!" });
             }
 
+            //Check empty dataset
+            if(rows.length === 0){
+                return res.status(204).json({ message: "No data found!" });
+            }
+
             const response = {
                 stationOpID: stationOpID,
                 tagOpID: tagOpID,
@@ -112,10 +117,7 @@ exports.get_data = async (req, res, next) => {
                 }
             }      
          
-            //Check empty dataset
-            if(rows.length === 0){
-                return res.json({ message: "No data found!" });
-            }
+
             return res.status(200).json(response);
         });
     });

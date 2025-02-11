@@ -47,6 +47,11 @@ exports.get_data = async (req, res, next) => {
             connection.release(); //Release the connection from the pool
             if(err) return res.status(500).json({message: 'Internal Server Error'});
 
+            //Check empty dataset
+            if(rows.length === 0){
+                return res.status(204).json({ message: "No data found!" });
+            }
+
             const response = {
                 stationID: tollStationID,
                 stationOperator: rows[0].tollOpID,
@@ -106,13 +111,8 @@ exports.get_data = async (req, res, next) => {
                 }
             }  
             
-            //Check empty dataset
-            if(rows.length === 0){
-                return res.json({ message: "No data found!" });
-            }
             return res.status(200).json(response);
         });
     });
 };
-
 

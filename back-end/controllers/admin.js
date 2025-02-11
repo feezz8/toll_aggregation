@@ -5,33 +5,56 @@ const csv = require('fast-csv');
 const upload = multer({ storage: multer.memoryStorage() });
 
 exports.healthcheck = async(req, res) => {
-    const query = `
-    SELECT 
-        COUNT(DISTINCT s.ID) as station_count,
-        COUNT(DISTINCT p.tagRef) as tag_count,
-        COUNT(DISTINCT p.ID) as pass_count
-    FROM toll_stations s
-    CROSS JOIN passes p
-    LIMIT 1;
+    const passes_query = ` 
+        SELECT  
+            COUNT (ID) as n_passes,
+            COUNT (DISTINCT tagRef) as n_tags
+        FROM
+            passes
     `;
+
+    const tolls_query = `
+    SELECT
+        COUNT (ID) as n_tolls
+    FROM 
+        toll_stations
+    `;
+
     pool.getConnection((err, connection) => {
         if(err) return res.status(500).json({ message: 'Connection pool is saturated' });
 
-        connection.query(query, (err, rows) => {
+        const maskedConnectionString = `mysql://${process.env.DB_USER}@${process.env.DB_PORT}/${process.env.DB}`;
 
-            connection.release();
-            if(err) return res.status(401).json({ status: 'failed', dbconnection:' ' }); //Error on DB connection
+        connection.query(passes_query, (err, passes_rows) => {
 
-            const response = {
-                status: 'OK',
-                dbconnection: ' ', //connection string
-                n_stations: rows.station_count,
-                n_tags: rows.tag_count,
-                n_passes: rows.pass_count
-            };
-            
-            return res.status(200).json(response);
+            if(err) return res.status(400).json({ status: 'failed', dbconnection:' ' }); //Error on DB connection
+
+            connection.query(tolls_query, (err, toll_rows) => {
+
+                if(err) return res.status(400).json({ status: 'failed', dbconnection:' ' });
+
+                const response = {
+                    status: 'OK',
+                    dbconnection: maskedConnectionString, //connection string
+                    n_stations: toll_rows[0].n_tolls,
+                    n_tags: passes_rows[0].n_tags,
+                    n_passes: passes_rows[0].n_passes
+                };
+
+                connection.release();
+                return res.status(200).json(response);
+    
+            });
+    
         });
+
+        connection.query(passes_query, (err, toll_rows) => {
+
+            if(err) return res.status(400).json({ status: 'failed', dbconnection:' ' });
+
+        });
+
+
     });
 };
 
