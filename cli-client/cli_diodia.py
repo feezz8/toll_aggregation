@@ -60,9 +60,9 @@ def handle_request(endpoint: str, method: str = "GET", api_key: Optional[str] = 
     if api_key:
         headers["secret-key"] = api_key  # Changed from X-OBSERVATORY-AUTH to secret-key
 
-    print(f"🔍 Debug: API Key Used: {api_key}")
-    print(f"🔍 Debug: Headers:", headers)
-    print(f"🔍 Sending request to: {API_URL + endpoint}")
+    #print(f"🔍 Debug: API Key Used: {api_key}")
+    #print(f"🔍 Debug: Headers:", headers)
+    #print(f"🔍 Sending request to: {API_URL + endpoint}")
 
     url = API_URL + endpoint
     try:
@@ -117,57 +117,9 @@ def print_response(response, format: str = "json", found_msg: str = "", empty_ms
 app = typer.Typer(help="CLI manager for Toll Management System")
 
 ####################################
-# Λειτουργίες διαπίστευσης (login, logout)
-####################################
-@app.command()
-def login(
-    username: Annotated[str, typer.Option(help="Username", show_default=False)],
-    passw: Annotated[str, typer.Option(help="Password", show_default=False)]
-):
-    """Logs in and stores token to local storage."""
-    store_config("api_key", None)
-    try:
-        response = requests.post(
-            API_URL + "/login",
-            data={'username': username, 'password': passw},
-            headers={'content-type': 'application/x-www-form-urlencoded'}
-        )
-        if response.status_code == 200:
-            json_resp = response.json()
-            if "token" in json_resp:
-                store_config("api_key", json_resp["token"])
-                print(":white_check_mark: [bold green]Successfully authenticated.[/bold green]")
-            else:
-                print(":no_good: [bold red]No token in response.[/bold red]")
-        elif response.status_code == 401:
-            print(":stop_sign: [bold red]Authentication failed (wrong credentials).[/bold red]")
-        else:
-            print(":no_good: [bold red]Unexpected status code.[/bold red]")
-    except Exception as e:
-        print(f":no_good: [bold red]Error: {e}[/bold red]")
-
-@app.command()
-#@authenticated
-def logout(_api_key: str = None):
-    """Logs out and deletes token from local storage."""
-    try:
-        response = requests.post(
-            API_URL + "/logout",
-            headers={"X-OBSERVATORY-AUTH": _api_key}
-        )
-        if response.status_code == 200:
-            print(":white_check_mark: [bold green]Successfully logged out.[/bold green]")
-        else:
-            print(":no_good: [bold red]Logout failed.[/bold red]")
-    except Exception as e:
-        print(f":cross_mark: [bold red]Error: {e}[/bold red]")
-    store_config("api_key", None)
-
-####################################
 # Λειτουργίες βασικών endpoints
 ####################################
 @app.command()
-#@authenticated
 def tollstationpasses(
     station: Annotated[str, typer.Option(help="Toll station ID")],
     from_date: Annotated[str, typer.Option("--from", help="Start date (YYYYMMDD)")],
@@ -182,7 +134,6 @@ def tollstationpasses(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Toll station passes:[/bold green]")
 
 @app.command()
-#@authenticated
 def passanalysis(
     stationop: Annotated[str, typer.Option(help="Station operator ID")],
     tagop: Annotated[str, typer.Option(help="Tag operator ID")],
@@ -198,7 +149,6 @@ def passanalysis(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Pass analysis:[/bold green]")
 
 @app.command()
-#@authenticated
 def passescost(
     stationop: Annotated[str, typer.Option(help="Toll operator ID")],
     tagop: Annotated[str, typer.Option(help="Tag operator ID")],
@@ -214,7 +164,6 @@ def passescost(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Passes cost:[/bold green]")
 
 @app.command()
-#@authenticated
 def chargesby(
     opid: Annotated[str, typer.Option(help="Toll operator ID")],
     from_date: Annotated[str, typer.Option("--from", help="Start date (YYYYMMDD)")],
@@ -232,7 +181,6 @@ def chargesby(
 # Λειτουργίες διαχειριστικών endpoints
 ####################################
 @app.command()
-@authenticated
 def healthcheck(
     format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
     _api_key: str = None
@@ -244,7 +192,6 @@ def healthcheck(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Healthcheck result:[/bold green]")
 
 @app.command()
-#@authenticated
 def resetstations(
     format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
     _api_key: str = None
@@ -258,7 +205,6 @@ def resetstations(
     print_response(response, format=format, found_msg=":white_check_mark: [bold green]Reset stations result:[/bold green]")
 
 @app.command()
-#@authenticated
 def resetpasses(
     format: Annotated[str, typer.Option(help="Output format (json or csv)", show_default=True)] = "json",
     _api_key: str = None
@@ -281,7 +227,6 @@ def admin(
             raise typer.Exit()
         addpasses_command(source)
 
-@authenticated
 def addpasses_command(source: str, _api_key: str = None):
     """Uploads pass events from a CSV file."""
     try:

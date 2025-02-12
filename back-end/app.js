@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname,'..', 'front-end', 'public')));
+app.use(express.static(path.join(__dirname,'..', 'front-end')));
 
 /*Routes used*/
 app.use('/api', toll_station);

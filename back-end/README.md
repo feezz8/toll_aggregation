@@ -10,3 +10,5 @@ DB_PASS = "YOUR DB PASSWORD"
 DB = "YOUR DB NAME"
 
 NOTE: you need to create an SSL certificate to connect to https.
+
+

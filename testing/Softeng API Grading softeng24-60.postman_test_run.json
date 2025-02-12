@@ -1,0 +1,1903 @@
+{
+	"id": "8f3cef72-1eb4-4f34-8081-2fd9fd79a594",
+	"name": "Softeng API Grading softeng24-60",
+	"timestamp": "2025-02-12T20:03:07.973Z",
+	"collection_id": "40657248-c013d8c4-31fd-419b-847d-46ecb28014a7",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 50,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-02-12T20:03:01.682Z",
+	"totalFail": 51,
+	"results": [
+		{
+			"id": "f53a0990-f7ea-453e-a2ea-4062a2ba3998",
+			"name": "Login",
+			"url": "https://galileo.softlab.ntua.gr/api-grading/login",
+			"time": 40,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Save response body to a variable": false
+			},
+			"testPassFailCounts": {
+				"Save response body to a variable": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Save response body to a variable": false
+				}
+			]
+		},
+		{
+			"id": "9b1dd0ff-37c6-448f-b53c-7b2be000ae89",
+			"name": "se24-60 admin-03",
+			"url": "https://localhost:9115/api/admin/healthcheck",
+			"time": 67,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/admin/healthcheck": true,
+				"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/admin/healthcheck": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				67
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/admin/healthcheck": true,
+					"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": false
+				}
+			]
+		},
+		{
+			"id": "d5bd32a7-d0ad-4e7f-81e8-a85f4ad1cf52",
+			"name": "se24-60 admin-04",
+			"url": "https://localhost:9115/api/admin/resetpasses",
+			"time": 88,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/admin/resetpasses": true,
+				"[Softeng Grading Service]: Stored response for api/admin/resetpasses successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/admin/resetpasses": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/admin/resetpasses successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/admin/resetpasses": true,
+					"[Softeng Grading Service]: Stored response for api/admin/resetpasses successfully.": false
+				}
+			]
+		},
+		{
+			"id": "2d0bb103-cb0f-496d-8971-495360199ba1",
+			"name": "se24-60 admin-05",
+			"url": "https://localhost:9115/api/admin/healthcheck",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/admin/healthcheck": true,
+				"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/admin/healthcheck": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/admin/healthcheck": true,
+					"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": false
+				}
+			]
+		},
+		{
+			"id": "aaad0da5-fe9b-4725-a99f-433a4c4f3d1d",
+			"name": "se24-60 admin-06",
+			"url": "https://localhost:9115/api/admin/resetstations",
+			"time": 102,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/admin/resetstations": true,
+				"[Softeng Grading Service]: Stored response for api/admin/resetstations successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/admin/resetstations": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/admin/resetstations successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				102
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/admin/resetstations": true,
+					"[Softeng Grading Service]: Stored response for api/admin/resetstations successfully.": false
+				}
+			]
+		},
+		{
+			"id": "44bcf0b1-2ed2-417a-8f41-a16e780bbae7",
+			"name": "se24-60 admin-07",
+			"url": "https://localhost:9115/api/admin/healthcheck",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/admin/healthcheck": true,
+				"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/admin/healthcheck": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/admin/healthcheck": true,
+					"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": false
+				}
+			]
+		},
+		{
+			"id": "42c55fbc-7c02-46bc-a05d-bdd81b56d379",
+			"name": "se24-60 admin-08",
+			"url": "https://localhost:9115/api/admin/addpasses",
+			"time": 124,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/admin/addpasses": true,
+				"[Softeng Grading Service]: Stored response for api/admin/addpasses successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/admin/addpasses": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/admin/addpasses successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				124
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/admin/addpasses": true,
+					"[Softeng Grading Service]: Stored response for api/admin/addpasses successfully.": false
+				}
+			]
+		},
+		{
+			"id": "bf7a127e-2cf1-473c-97a6-f7a5c5bbbbe1",
+			"name": "se24-60 admin-09",
+			"url": "https://localhost:9115/api/admin/healthcheck",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/admin/healthcheck": true,
+				"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/admin/healthcheck": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/admin/healthcheck": true,
+					"[Softeng Grading Service]: Stored response for api/admin/healthcheck successfully.": false
+				}
+			]
+		},
+		{
+			"id": "95ce80cf-593b-4c7e-8106-762bdccb049c",
+			"name": "se24-60 tollStationPasses-01",
+			"url": "https://localhost:9115/api/tollStationPasses/AM08/20220508/20220522",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/AM08/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/AM08/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/AM08/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/AM08/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/AM08/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/AM08/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "f033dcf0-5c06-4588-80a9-1338b48f1fdf",
+			"name": "se24-60 tollStationPasses-02",
+			"url": "https://localhost:9115/api/tollStationPasses/NAO04/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/NAO04/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/NAO04/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/NAO04/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/NAO04/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/NAO04/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/NAO04/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "0287dad5-ee31-4790-bc40-7eb772a7c35b",
+			"name": "se24-60 tollStationPasses-03",
+			"url": "https://localhost:9115/api/tollStationPasses/NO01/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/NO01/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/NO01/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/NO01/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/NO01/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/NO01/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/NO01/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "b4dc09d7-a4b7-41ee-aece-48ce4695d385",
+			"name": "se24-60 tollStationPasses-04",
+			"url": "https://localhost:9115/api/tollStationPasses/OO03/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "90fbef8d-e3c6-48a0-9dd5-ed8304e8a5d8",
+			"name": "se24-60 tollStationPasses-05",
+			"url": "https://localhost:9115/api/tollStationPasses/XXX/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/XXX/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/XXX/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/XXX/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/XXX/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/XXX/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/XXX/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "871d5267-4865-4c8b-a76e-f2e59d89f858",
+			"name": "se24-60 tollStationPasses-06",
+			"url": "https://localhost:9115/api/tollStationPasses/OO03/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "aac2a106-a46c-4e6d-abbc-76ee79720a41",
+			"name": "se24-60 tollStationPasses-07",
+			"url": "https://localhost:9115/api/error/OO03/20220508/20220522",
+			"time": 4,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/error/OO03/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/error/OO03/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/error/OO03/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/error/OO03/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/error/OO03/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/error/OO03/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "907de131-a978-435d-86fa-94870a118b34",
+			"name": "se24-60 tollStationPasses-08",
+			"url": "https://localhost:9115/api/tollStationPasses/AM08/20220509/20220520",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/AM08/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/AM08/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/AM08/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/AM08/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/AM08/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/AM08/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "92a4d8e1-6036-48fa-899d-d9252db9f16a",
+			"name": "se24-60 tollStationPasses-09",
+			"url": "https://localhost:9115/api/tollStationPasses/NAO04/20220509/20220520",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/NAO04/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/NAO04/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/NAO04/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/NAO04/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/NAO04/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/NAO04/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "d2f014f8-66ef-47bc-9639-32dbe35c22b9",
+			"name": "se24-60 tollStationPasses-10",
+			"url": "https://localhost:9115/api/tollStationPasses/NO01/20220509/20220520",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/NO01/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/NO01/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/NO01/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/NO01/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/NO01/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/NO01/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "b96051d0-4701-4622-9b3e-c0f20f905127",
+			"name": "se24-60 tollStationPasses-11",
+			"url": "https://localhost:9115/api/tollStationPasses/OO03/20220509/20220520",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "abf95ea0-0f4b-4fef-9d1e-2f7eef369c5d",
+			"name": "se24-60 tollStationPasses-12",
+			"url": "https://localhost:9115/api/tollStationPasses/XXX/20220509/20220520",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/XXX/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/XXX/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/XXX/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/XXX/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/XXX/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/XXX/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "caaf3dd8-f4f0-4300-8823-d5afe3e5a29b",
+			"name": "se24-60 tollStationPasses-13",
+			"url": "https://localhost:9115/api/tollStationPasses/OO03/20220509/20220520",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/tollStationPasses/OO03/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/tollStationPasses/OO03/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "8ebc04b3-ce89-4fae-80d7-8e41f7c2548e",
+			"name": "se24-60 passAnalysis-01",
+			"url": "https://localhost:9115/api/passAnalysis/AM/NAO/20220508/20220522",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/AM/NAO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/AM/NAO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/AM/NAO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/AM/NAO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/AM/NAO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/AM/NAO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "b7758eff-7653-43c2-9ab1-2106751dab04",
+			"name": "se24-60 passAnalysis-02",
+			"url": "https://localhost:9115/api/passAnalysis/NAO/AM/20220508/20220522",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/NAO/AM/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/NAO/AM/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/NAO/AM/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/NAO/AM/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/NAO/AM/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/NAO/AM/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "6c716205-6a03-461f-987d-398abb160302",
+			"name": "se24-60 passAnalysis-03",
+			"url": "https://localhost:9115/api/passAnalysis/NO/OO/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/NO/OO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/NO/OO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/NO/OO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/NO/OO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/NO/OO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/NO/OO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "46f6bfeb-200e-4c7c-b5ff-2109d586b7fb",
+			"name": "se24-60 passAnalysis-04",
+			"url": "https://localhost:9115/api/passAnalysis/OO/KO/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/OO/KO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/OO/KO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/OO/KO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/OO/KO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/OO/KO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/OO/KO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "ff115bdd-f918-4848-b0a0-f561ce099301",
+			"name": "se24-60 passAnalysis-05",
+			"url": "https://localhost:9115/api/passAnalysis/XXX/KO/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/XXX/KO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/XXX/KO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/XXX/KO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/XXX/KO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/XXX/KO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/XXX/KO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "ff5e1449-0276-4b3e-8a33-9ebd46c85180",
+			"name": "se24-60 passAnalysis-06",
+			"url": "https://localhost:9115/api/passAnalysis/AM/NAO/20220509/20220520",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/AM/NAO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/AM/NAO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/AM/NAO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/AM/NAO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/AM/NAO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/AM/NAO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "739b0a1c-abd6-4938-b96c-6e7894641278",
+			"name": "se24-60 passAnalysis-07",
+			"url": "https://localhost:9115/api/passAnalysis/NAO/AM/20220509/20220520",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/NAO/AM/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/NAO/AM/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/NAO/AM/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/NAO/AM/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/NAO/AM/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/NAO/AM/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "e7d05d65-2160-4b4d-bb9c-b42cd5b86116",
+			"name": "se24-60 passAnalysis-08",
+			"url": "https://localhost:9115/api/passAnalysis/NO/OO/20220509/20220520",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/NO/OO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/NO/OO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/NO/OO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/NO/OO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/NO/OO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/NO/OO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "4e621a48-bee3-4743-a3b8-338ae1e1e291",
+			"name": "se24-60 passAnalysis-09",
+			"url": "https://localhost:9115/api/passAnalysis/OO/KO/20220509/20220520",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/OO/KO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/OO/KO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/OO/KO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/OO/KO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/OO/KO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/OO/KO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "18f1ebde-81d6-49e2-a3c8-bf1170fdcd02",
+			"name": "se24-60 passAnalysis-10",
+			"url": "https://localhost:9115/api/passAnalysis/XXX/KO/20220509/20220520",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/XXX/KO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/XXX/KO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passAnalysis/XXX/KO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passAnalysis/XXX/KO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passAnalysis/XXX/KO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passAnalysis/XXX/KO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "5a9b58d6-a3c8-435e-8d70-1b5c321356c4",
+			"name": "se24-60 passesCost-01",
+			"url": "https://localhost:9115/api/passesCost/AM/NAO/20220508/20220522",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/AM/NAO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/AM/NAO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/AM/NAO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/AM/NAO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/AM/NAO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/AM/NAO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "e4ce5ecb-a26d-4260-b0bf-fed46bdfcb58",
+			"name": "se24-60 passesCost-02",
+			"url": "https://localhost:9115/api/passesCost/NAO/AM/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/NAO/AM/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/NAO/AM/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/NAO/AM/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/NAO/AM/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/NAO/AM/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/NAO/AM/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "fc3ef055-a647-4e30-a5ff-b161702fa48c",
+			"name": "se24-60 passesCost-03",
+			"url": "https://localhost:9115/api/passesCost/NO/OO/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/NO/OO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/NO/OO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/NO/OO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/NO/OO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/NO/OO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/NO/OO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "78f30329-1b6f-4a6a-9157-98271c3f85dd",
+			"name": "se24-60 passesCost-04",
+			"url": "https://localhost:9115/api/passesCost/OO/KO/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/OO/KO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/OO/KO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/OO/KO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/OO/KO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/OO/KO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/OO/KO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "2126ba1a-a6fb-4e81-9fd9-d78f18097bec",
+			"name": "se24-60 passesCost-05",
+			"url": "https://localhost:9115/api/passesCost/XXX/KO/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/XXX/KO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/XXX/KO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/XXX/KO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/XXX/KO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/XXX/KO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/XXX/KO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "d9eb432c-1280-4a0b-ab5c-aba6e0389e91",
+			"name": "se24-60 passesCost-06",
+			"url": "https://localhost:9115/api/passesCost/AM/NAO/20220509/20220520",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/AM/NAO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/AM/NAO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/AM/NAO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/AM/NAO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/AM/NAO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/AM/NAO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "86be2565-01e3-4bab-bfe5-c1c42da94d81",
+			"name": "se24-60 passesCost-07",
+			"url": "https://localhost:9115/api/passesCost/NAO/AM/20220509/20220520",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/NAO/AM/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/NAO/AM/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/NAO/AM/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/NAO/AM/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/NAO/AM/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/NAO/AM/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "35c4ce99-2df4-4aa8-b60d-f6ee402cd89f",
+			"name": "se24-60 passesCost-08",
+			"url": "https://localhost:9115/api/passesCost/NO/OO/20220509/20220520",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/NO/OO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/NO/OO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/NO/OO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/NO/OO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/NO/OO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/NO/OO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "8085f509-63ce-47de-9fec-9586be0aa223",
+			"name": "se24-60 passesCost-09",
+			"url": "https://localhost:9115/api/passesCost/OO/KO/20220509/20220520",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/OO/KO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/OO/KO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/OO/KO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/OO/KO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/OO/KO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/OO/KO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "6fb9cbf9-03b9-4495-8759-5a2e5f46ba1f",
+			"name": "se24-60 passesCost-10",
+			"url": "https://localhost:9115/api/passesCost/XXX/KO/20220509/20220520",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/XXX/KO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/passesCost/XXX/KO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/passesCost/XXX/KO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/passesCost/XXX/KO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/passesCost/XXX/KO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/passesCost/XXX/KO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "39938b78-0b21-46e7-a0f4-a5c17c06390d",
+			"name": "se24-60 chargesBy-01",
+			"url": "https://localhost:9115/api/chargesBy/NAO/20220508/20220522",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/NAO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/NAO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/NAO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/NAO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/NAO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/NAO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "e4d8b9fb-39bd-459f-8a16-38c54a5f0361",
+			"name": "se24-60 chargesBy-02",
+			"url": "https://localhost:9115/api/chargesBy/GE/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/GE/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/GE/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/GE/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/GE/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/GE/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/GE/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "779b4eb5-c2bc-4bd8-b6f8-8383972f2318",
+			"name": "se24-60 chargesBy-03",
+			"url": "https://localhost:9115/api/chargesBy/OO/20220508/20220522",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/OO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/OO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/OO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/OO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/OO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/OO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "07057559-de4c-414e-84d3-90ef78e71460",
+			"name": "se24-60 chargesBy-04",
+			"url": "https://localhost:9115/api/chargesBy/KO/20220508/20220522",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/KO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/KO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/KO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/KO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/KO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/KO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "987ff058-2bde-4eda-a500-24553ce9f252",
+			"name": "se24-60 chargesBy-05",
+			"url": "https://localhost:9115/api/chargesBy/NO/20220508/20220522",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/NO/20220508/20220522": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/NO/20220508/20220522 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/NO/20220508/20220522": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/NO/20220508/20220522 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/NO/20220508/20220522": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/NO/20220508/20220522 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "d27b1f5c-fc54-4cef-ac3b-9e4794ab9275",
+			"name": "se24-60 chargesBy-06",
+			"url": "https://localhost:9115/api/chargesBy/NAO/20220509/20220520",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/NAO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/NAO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/NAO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/NAO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/NAO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/NAO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "d6aeed18-acb1-480e-b6fe-291d89820728",
+			"name": "se24-60 chargesBy-07",
+			"url": "https://localhost:9115/api/chargesBy/GE/20220509/20220520",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/GE/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/GE/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/GE/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/GE/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/GE/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/GE/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "91ab3748-bba9-4660-9fbc-f34a9fb03230",
+			"name": "se24-60 chargesBy-08",
+			"url": "https://localhost:9115/api/chargesBy/OO/20220509/20220520",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/OO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/OO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/OO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/OO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/OO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/OO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "4162fbad-c3fd-45f0-8ef2-dde55d1faf38",
+			"name": "se24-60 chargesBy-09",
+			"url": "https://localhost:9115/api/chargesBy/KO/20220509/20220520",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/KO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/KO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/KO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/KO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/KO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/KO/20220509/20220520 successfully.": false
+				}
+			]
+		},
+		{
+			"id": "9a7f4005-7d4f-4256-b802-5c5378ced16e",
+			"name": "se24-60 chargesBy-10",
+			"url": "https://localhost:9115/api/chargesBy/NO/20220509/20220520",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/NO/20220509/20220520": true,
+				"[Softeng Grading Service]: Stored response for api/chargesBy/NO/20220509/20220520 successfully.": false
+			},
+			"testPassFailCounts": {
+				"[Softeng Grading Service]: Sending response from api/chargesBy/NO/20220509/20220520": {
+					"pass": 1,
+					"fail": 0
+				},
+				"[Softeng Grading Service]: Stored response for api/chargesBy/NO/20220509/20220520 successfully.": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"[Softeng Grading Service]: Sending response from api/chargesBy/NO/20220509/20220520": true,
+					"[Softeng Grading Service]: Stored response for api/chargesBy/NO/20220509/20220520 successfully.": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 720,
+	"collection": {
+		"requests": [
+			{
+				"id": "f53a0990-f7ea-453e-a2ea-4062a2ba3998",
+				"method": "POST"
+			},
+			{
+				"id": "9b1dd0ff-37c6-448f-b53c-7b2be000ae89",
+				"method": "GET"
+			},
+			{
+				"id": "d5bd32a7-d0ad-4e7f-81e8-a85f4ad1cf52",
+				"method": "POST"
+			},
+			{
+				"id": "2d0bb103-cb0f-496d-8971-495360199ba1",
+				"method": "GET"
+			},
+			{
+				"id": "aaad0da5-fe9b-4725-a99f-433a4c4f3d1d",
+				"method": "POST"
+			},
+			{
+				"id": "44bcf0b1-2ed2-417a-8f41-a16e780bbae7",
+				"method": "GET"
+			},
+			{
+				"id": "42c55fbc-7c02-46bc-a05d-bdd81b56d379",
+				"method": "POST"
+			},
+			{
+				"id": "bf7a127e-2cf1-473c-97a6-f7a5c5bbbbe1",
+				"method": "GET"
+			},
+			{
+				"id": "95ce80cf-593b-4c7e-8106-762bdccb049c",
+				"method": "GET"
+			},
+			{
+				"id": "f033dcf0-5c06-4588-80a9-1338b48f1fdf",
+				"method": "GET"
+			},
+			{
+				"id": "0287dad5-ee31-4790-bc40-7eb772a7c35b",
+				"method": "GET"
+			},
+			{
+				"id": "b4dc09d7-a4b7-41ee-aece-48ce4695d385",
+				"method": "GET"
+			},
+			{
+				"id": "90fbef8d-e3c6-48a0-9dd5-ed8304e8a5d8",
+				"method": "GET"
+			},
+			{
+				"id": "871d5267-4865-4c8b-a76e-f2e59d89f858",
+				"method": "GET"
+			},
+			{
+				"id": "aac2a106-a46c-4e6d-abbc-76ee79720a41",
+				"method": "GET"
+			},
+			{
+				"id": "907de131-a978-435d-86fa-94870a118b34",
+				"method": "GET"
+			},
+			{
+				"id": "92a4d8e1-6036-48fa-899d-d9252db9f16a",
+				"method": "GET"
+			},
+			{
+				"id": "d2f014f8-66ef-47bc-9639-32dbe35c22b9",
+				"method": "GET"
+			},
+			{
+				"id": "b96051d0-4701-4622-9b3e-c0f20f905127",
+				"method": "GET"
+			},
+			{
+				"id": "abf95ea0-0f4b-4fef-9d1e-2f7eef369c5d",
+				"method": "GET"
+			},
+			{
+				"id": "caaf3dd8-f4f0-4300-8823-d5afe3e5a29b",
+				"method": "GET"
+			},
+			{
+				"id": "8ebc04b3-ce89-4fae-80d7-8e41f7c2548e",
+				"method": "GET"
+			},
+			{
+				"id": "b7758eff-7653-43c2-9ab1-2106751dab04",
+				"method": "GET"
+			},
+			{
+				"id": "6c716205-6a03-461f-987d-398abb160302",
+				"method": "GET"
+			},
+			{
+				"id": "46f6bfeb-200e-4c7c-b5ff-2109d586b7fb",
+				"method": "GET"
+			},
+			{
+				"id": "ff115bdd-f918-4848-b0a0-f561ce099301",
+				"method": "GET"
+			},
+			{
+				"id": "ff5e1449-0276-4b3e-8a33-9ebd46c85180",
+				"method": "GET"
+			},
+			{
+				"id": "739b0a1c-abd6-4938-b96c-6e7894641278",
+				"method": "GET"
+			},
+			{
+				"id": "e7d05d65-2160-4b4d-bb9c-b42cd5b86116",
+				"method": "GET"
+			},
+			{
+				"id": "4e621a48-bee3-4743-a3b8-338ae1e1e291",
+				"method": "GET"
+			},
+			{
+				"id": "18f1ebde-81d6-49e2-a3c8-bf1170fdcd02",
+				"method": "GET"
+			},
+			{
+				"id": "5a9b58d6-a3c8-435e-8d70-1b5c321356c4",
+				"method": "GET"
+			},
+			{
+				"id": "e4ce5ecb-a26d-4260-b0bf-fed46bdfcb58",
+				"method": "GET"
+			},
+			{
+				"id": "fc3ef055-a647-4e30-a5ff-b161702fa48c",
+				"method": "GET"
+			},
+			{
+				"id": "78f30329-1b6f-4a6a-9157-98271c3f85dd",
+				"method": "GET"
+			},
+			{
+				"id": "2126ba1a-a6fb-4e81-9fd9-d78f18097bec",
+				"method": "GET"
+			},
+			{
+				"id": "d9eb432c-1280-4a0b-ab5c-aba6e0389e91",
+				"method": "GET"
+			},
+			{
+				"id": "86be2565-01e3-4bab-bfe5-c1c42da94d81",
+				"method": "GET"
+			},
+			{
+				"id": "35c4ce99-2df4-4aa8-b60d-f6ee402cd89f",
+				"method": "GET"
+			},
+			{
+				"id": "8085f509-63ce-47de-9fec-9586be0aa223",
+				"method": "GET"
+			},
+			{
+				"id": "6fb9cbf9-03b9-4495-8759-5a2e5f46ba1f",
+				"method": "GET"
+			},
+			{
+				"id": "39938b78-0b21-46e7-a0f4-a5c17c06390d",
+				"method": "GET"
+			},
+			{
+				"id": "e4d8b9fb-39bd-459f-8a16-38c54a5f0361",
+				"method": "GET"
+			},
+			{
+				"id": "779b4eb5-c2bc-4bd8-b6f8-8383972f2318",
+				"method": "GET"
+			},
+			{
+				"id": "07057559-de4c-414e-84d3-90ef78e71460",
+				"method": "GET"
+			},
+			{
+				"id": "987ff058-2bde-4eda-a500-24553ce9f252",
+				"method": "GET"
+			},
+			{
+				"id": "d27b1f5c-fc54-4cef-ac3b-9e4794ab9275",
+				"method": "GET"
+			},
+			{
+				"id": "d6aeed18-acb1-480e-b6fe-291d89820728",
+				"method": "GET"
+			},
+			{
+				"id": "91ab3748-bba9-4660-9fbc-f34a9fb03230",
+				"method": "GET"
+			},
+			{
+				"id": "4162fbad-c3fd-45f0-8ef2-dde55d1faf38",
+				"method": "GET"
+			},
+			{
+				"id": "9a7f4005-7d4f-4256-b802-5c5378ced16e",
+				"method": "GET"
+			}
+		]
+	}
+}

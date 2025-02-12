@@ -5,10 +5,10 @@ const admin = require('../controllers/admin');
 
 const router = express.Router();
 
-router.get('/healthcheck', auth, admin.healthcheck);
-router.post('/resetstations', auth, admin.reset_stations);
-router.post('/resetpasses', auth, admin.reset_passes);
-router.post('/addpasses', auth, admin.add_passes);
+router.get('/healthcheck', admin.healthcheck);
+router.post('/resetstations', admin.resetstations);
+router.post('/resetpasses', admin.resetpasses);
+router.post('/addpasses', admin.addpasses);
 
 
 module.exports = router;
