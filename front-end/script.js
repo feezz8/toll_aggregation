@@ -17,11 +17,14 @@ function fetchPassStats() {
     const dateFrom = dateFromInput.replace(/-/g, '');
     const dateTo = dateToInput.replace(/-/g, '');
 
-
     console.log(stationID, dateFrom, dateTo);
 
     axios.get(`${API_BASE_URL}/tollStationPasses/${stationID}/${dateFrom}/${dateTo}`)
         .then(response => {
+            if (response.status !== 200) { 
+                throw new Error(`Server responded with status: ${response.status}`);
+            }
+
             console.log(stationID, dateFrom, dateTo);
             document.getElementById("passStatsResult").innerHTML = `
                 <h3>📊 Αποτελέσματα:</h3>
@@ -29,8 +32,12 @@ function fetchPassStats() {
                 <p>Συνολικό κέρδος σταθμού ${stationID} μεταξύ ${dateFromInput} και ${dateToInput}: <strong>${response.data.passList.reduce((sum, pass) => sum + pass.passCharge, 0).toFixed(2)}€</strong></p>
             `;
         })
-        .catch(alert("🚨 Προέκυψε σφάλμα! 'Ελεγξε πως έχει συμπληρώσει σωστά όλα τα πεδία"));
+        .catch(error => {
+            console.error("Fetch error:", error);
+            alert("🚨 Προέκυψε σφάλμα! Ελέγξτε αν έχετε συμπληρώσει σωστά όλα τα πεδία ή αν ο διακομιστής είναι προσβάσιμος.");
+        });
 }
+
 
 // 🔹 Function to fetch expenses report
 function fetchExpensesReport() {
@@ -55,5 +62,8 @@ function fetchExpensesReport() {
                 <p>Συνολικό ποσό που μου οφείλουν οι υπόλοιποι πάροχοι μεταξύ ${dateFromInput} και ${dateToInput}: <strong>${response.data.vOpList.reduce((sum, pass) => sum + pass.passesCost, 0).toFixed(2)}€</strong></p>
             `;
         })
-        .catch(alert("🚨 Προέκυψε σφάλμα! 'Ελεγξε πως έχει συμπληρώσει σωστά όλα τα πεδία"));
+        .catch(error => {
+            console.error("Fetch error:", error);
+            alert("🚨 Προέκυψε σφάλμα! Ελέγξτε αν έχετε συμπληρώσει σωστά όλα τα πεδία ή αν ο διακομιστής είναι προσβάσιμος.");
+        });
 }
