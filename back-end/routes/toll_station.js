@@ -7,10 +7,10 @@ const charges_by = require('../controllers/charges_by');
 
 const router = express.Router();
 
-router.get('/tollStationPasses/:tollStationID/:date_from/:date_to', auth, toll_station_passes.get_data);
-router.get('/passAnalysis/:stationOpID/:tagOpID/:date_from/:date_to', auth, pass_analysis.get_data);
-router.get('/passesCost/:tollOpID/:tagOpID/:date_from/:date_to', auth, passes_cost.get_data);
-router.get('/chargesBy/:tollOpID/:date_from/:date_to', auth, charges_by.get_data);
+router.get('/tollStationPasses/:tollStationID/:date_from/:date_to', toll_station_passes.get_data);
+router.get('/passAnalysis/:stationOpID/:tagOpID/:date_from/:date_to', pass_analysis.get_data);
+router.get('/passesCost/:tollOpID/:tagOpID/:date_from/:date_to', passes_cost.get_data);
+router.get('/chargesBy/:tollOpID/:date_from/:date_to', charges_by.get_data);
 
 
 module.exports = router;
