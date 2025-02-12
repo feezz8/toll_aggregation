@@ -46,7 +46,10 @@ exports.get_data = async (req, res, next) => {
         //Check empty dataset
 
         if(rows.length === 0){
-            return res.status(204).json({ message: "No data found!" });
+            const no_data ={
+                message:'no data found'
+            };
+            return res.status(400).json(no_data);
         }
 
         const response = {

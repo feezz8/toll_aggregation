@@ -46,10 +46,12 @@ exports.get_data = async (req, res, next) => {
         connection.query(query, [date_from, date_to, tollStationID, date_from, date_to], (err, rows) =>{
             connection.release(); //Release the connection from the pool
             if(err) return res.status(500).json({message: 'Internal Server Error'});
-
-            //Check empty dataset
+            
             if(rows.length === 0){
-                return res.status(204).json({ message: "No data found!" });
+                const no_data ={
+                    message:'no data found'
+                };
+                return res.status(400).json(no_data);
             }
 
             const response = {
