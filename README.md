@@ -19,7 +19,7 @@ Included in this repository are two file containing a self signed ssl certificat
 Download or clone the entire repository and create the dependencies mentioned above. After that navigate to the folder "back-end" and execute the command "node server.js". When the server posts you can use your web browser to access the home page.
 
 # CLI
-This app implements a simple cli that can be used to send REST API requests through the terminal/console. In order to make the cli work run the command "pip install --editable" inside the cli-client directory. For the correct initialization of data through the command line you need to add the mock data .csv files in the same directory as the shell script testing the CLI.
+This app implements a simple cli that can be used to send REST API requests through the terminal/console. In order to make the cli work run the command "pip install --editable ." inside the cli-client directory. For the correct initialization of data through the command line you need to add the mock data .csv files in the same directory as the shell script testing the CLI.
 
 
 
